@@ -13,6 +13,7 @@ VOLUME /app/data
 USER root
 EXPOSE 8080
 CMD ${JAVA_HOME}/bin/java -jar /app/app.jar \
+--logging.file.path=/app/data/log
 --server.port=8080 \
 --ruoyi.profile=/app/data \
 --spring.redis.host=redis \

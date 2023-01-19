@@ -1,0 +1,23 @@
+# 使用 197055139/openjdk:8-alpine 是为了避免安装字体软件太长时间的问题, 和下面这段是差不多的作用
+FROM 197055139/openjdk:8-alpine
+
+#FROM openjdk:8-alpine
+# 解决若以验证码字体问题
+#RUN apk --no-cache add ttf-dejavu
+#COPY ./Arial.ttf /usr/share/fonts/ttf-dejavu/Arial.ttf
+
+
+# 拷贝服务程序
+COPY ./ruoyi-admin.jar /app/app.jar
+VOLUME /app/data
+USER root
+EXPOSE 8080
+CMD ${JAVA_HOME}/bin/java -jar /app/app.jar \
+--server.port=8080 \
+--ruoyi.profile=/app/data \
+--spring.redis.host=redis \
+--spring.redis.password=${redis_password} \
+--spring.redis.port=6379 \
+--spring.datasource.druid.master.username=root \
+--spring.datasource.druid.master.password=${mysql_password} \
+"--spring.datasource.druid.master.url=jdbc:mysql://mysql:${container_mysql_port}/${mysql_init_database_name}?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8"

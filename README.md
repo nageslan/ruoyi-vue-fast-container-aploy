@@ -21,15 +21,32 @@ Linux
 1. start.sh 一键部署容器, 第一次部署完后只需要替换ruoyi-admin.jar(后端服务程序)文件和./app/html(前端静态文件)后再次启动start.sh就可以再次完成部署, 一般启动时间为几秒
 2. stop.sh 停止容器并删除, 但是会保留数据
 
+## 版本介绍
 
+1. **standard-deploy: 标准版 部署: 后端, 前端, mysql, redis**
+2. **dev-deploy: 开发版 部署: mysql, redis**
+3. **backend-deploy: 单后端版 部署: 后端, mysql, redis**
+4. **frontend-deploy(未完成): 单前端版 部署: 前端**
 
-## 配置
+## standard-deploy标准版配置
+
+​		标准版就是部署所以东西的
 
 ​		配置`.env`来完成项目的配置
 
 ![image-20230119223106919](./assets/image-20230119223106919.png)
 
+## dev-deploy 开发版配置
 
+![image-20230120214250322](./assets/image-20230120214250322.png)
+
+## backend-deploy 后端版配置
+
+![image-20230120214332507](./assets/image-20230120214332507.png)
+
+## frontend-deploy 前端版配置
+
+![image-20230120214437145](./assets/image-20230120214437145.png)
 
 ## 演示
 
@@ -37,9 +54,7 @@ Linux
 
 ![image-20230119221508610](./assets/image-20230119221508610.png)
 
-### 1. 首先我们先pull下来该项目
-
-![image-20230119221600369](./assets/image-20230119221600369.png)
+### 1. 先选择 标准部署脚本 `standard-deploy` 文件, 拷贝到桌面.
 
 ### 2. 接着使用idea打开(方便), 使用maven打包
 

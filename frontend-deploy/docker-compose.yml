@@ -1,0 +1,17 @@
+# 修改配置 请查看 .env 文件以及app目录, 次文件尽量不要修改
+version: '3.1'
+services:
+  nginx:
+    restart: always
+    image: nginx:1.23.3
+    container_name: ${container_app_name}-${container_front_end_subname}
+    ports:
+      - ${front_end_port}:${container_front_end_port}
+    volumes:
+      - ./data/nginx/conf.d/:/etc/nginx/conf.d
+      - ./app/html:/usr/share/nginx/html
+      - ./data/nginx/logs:/var/log/nginx
+      - ./data/init/nginx.conf:/etc/nginx/nginx.conf:ro
+# 配置网络, 配置了这个之后在容器内部可以直接使用服务名来当作域名访问
+networks:
+  default:

@@ -1,0 +1,45 @@
+# 服务器端配置
+[mysqld]
+user=mysql
+
+# 服务端口号，默认为 3306
+port=3306
+
+# 表名大小写
+# 0 表名存储为给定的大小,比较区分大小写
+# 1 表名存储为小写的，   比较不区分大小写
+# 2 表名存储为给定的大小,比较时以小写形式进行比较
+lower_case_table_names=1
+
+# MySQL 服务的唯一编号，每个 MySQL 服务的 id 需唯一。
+server-id=1
+
+# 默认存储引擎
+default-storage-engine=INNODB
+
+# 数据库默认字符集
+character-set-server=utf8mb4
+
+# 数据库默认排序规则
+collation_server=utf8mb4_unicode_ci
+
+#设置 client 连接 mysql 时的字符集，防止乱码 
+init_connect='SET NAMES utf8mb4'
+
+[mysql]
+
+# 允许通过 TAB 键提示
+auto-rehash
+
+# 数据库字符集
+default-character-set=utf8mb4
+
+# MySQL 客户端应用读取
+[client]
+
+# MySQL 客户端连接服务器端时使用的端口号，默认为 3306
+port=3306
+
+# 数据库字符集
+default-character-set=utf8mb4
+
